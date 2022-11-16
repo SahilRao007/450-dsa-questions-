@@ -13,3 +13,40 @@ int sumOfMaxMin(int arr[], int n){
     }
     return (min+max);
 }
+
+@many methods to solve using sets , min and max heap , quickselect , map 
+main thing is u need to sort the array . 
+
+1. by min and max heap but its not optimal (almost on^2)
+#include<bits/stdc++.h>
+vector<int> kthSmallLarge(vector<int> &arr, int n, int k)
+{
+	vector<int>ans;
+    priority_queue<int> mp;
+    for(int i=0;i<k;i++)
+        mp.push(arr[i]);
+    for(int i=k;i<n;i++)
+    {
+        if(arr[i]<mp.top())
+        {
+            mp.pop();
+            mp.push(arr[i]);
+        }
+    }
+    priority_queue<int,vector<int>,greater<int>> pp;
+    for(int i=0;i<k;i++)
+        pp.push(arr[i]);
+    for(int i=k;i<n;i++)
+    {
+        if(arr[i]>pp.top())
+        {
+            pp.pop();
+            pp.push(arr[i]);
+        }
+    }
+    
+    ans.push_back(mp.top());
+    ans.push_back(pp.top());
+    return ans;
+    
+}
