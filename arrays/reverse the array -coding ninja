@@ -5,3 +5,21 @@ void reverseArray(vector<int> &arr , int m)
 	reverse(arr.begin()+m,arr.end());
     
 }
+
+
+@2nd method 
+using loop 
+#include <bits/stdc++.h> 
+void reverseArray(vector<int> &arr , int m)
+{
+	int i=m+1;
+    int j=arr.size()-1;
+    while(i<j)
+    {
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+        i++;j--;
+    }
+}
+
