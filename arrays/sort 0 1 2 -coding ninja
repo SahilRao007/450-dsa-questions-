@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+void sort012(int *a, int n)
+{
+   
+    int k=0;
+    int i=0;
+    int j=n-1;
+    
+
+    while(k<j and i<=j)
+    {
+        if(a[i]==0)
+        {
+            swap(a[i],a[k]);
+            k++;
+            
+        }
+        if(a[i]==2)
+        {   
+            swap(a[i],a[j]);
+            j--;
+            i--;
+        }
+        i++;
+    }
+}
