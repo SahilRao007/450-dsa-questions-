@@ -1,0 +1,22 @@
+ long long max(int a,int b)
+    {
+        if(a>b)
+        return a;
+        else
+        return b;
+    }
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum.
+    long long maxSubarraySum(int arr[], int n){
+        
+       long long cs=arr[0];
+       long long ms=arr[0];
+       for(int i=1;i<n;i++)
+       {
+           cs=max(arr[i],cs+arr[i]);
+           ms=max(cs,ms);
+           
+       }
+        return ms;
+    }
