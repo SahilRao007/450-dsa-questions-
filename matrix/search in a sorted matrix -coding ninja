@@ -1,1 +1,26 @@
 
+#include <bits/stdc++.h> 
+pair<int, int> search(vector<vector<int>> matrix, int x)
+{
+    int c,r;
+    c=r=-1;
+    int n=matrix[0].size();
+    int j=matrix[0].size()-1; //col
+    int i=0; //row 
+    while(i<n and j>=0)
+    {
+        if(matrix[i][j]==x)
+        {
+            c=i;
+            r=j;
+            break;
+        }
+        else if(matrix[i][j]>x)
+            j--;
+        else
+            i++;
+    }
+    pair<int,int>p(c,r);
+    return p;
+    
+}
