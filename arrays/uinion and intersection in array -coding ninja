@@ -1,0 +1,28 @@
+#include <bits/stdc++.h> 
+pair < int , int > findSimilarity(vector < int > arr1, vector < int > arr2, int n, int m) 
+{
+	set<int>s;
+    for(int i=0;i<n;i++)
+    {
+        s.insert(arr1[i]);
+    }
+    int comman=0;
+    int both=0;
+    for(int i=0;i<m;i++)
+    {
+        if(s.find(arr2[i])!=s.end())
+        {
+            comman++;
+        }
+        
+        s.insert(arr2[i]);
+       
+    }
+    both=s.size();
+    pair<int,int>p(comman,both);
+    return p;
+    
+}
+T.c=> O( n*logn + m*logm);
+
+@if its sorted then we can use 2 pointer approach then it will reduce the T.C to 0(n+m)
