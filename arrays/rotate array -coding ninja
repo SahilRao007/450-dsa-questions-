@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+
+int main() {
+   int n;
+    cin>>n;
+    vector<int>arr(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int k;
+    cin>>k;
+    reverse(arr.begin(),arr.end());
+    reverse(arr.begin()+(n-k),arr.end());
+    reverse(arr.begin(),arr.begin()+(n-k));
+    for(auto i:arr)
+    {
+        cout<<i<<" ";
+    }
+
+    return 0;
+}
+T.C->O(n)
+if we use our defined function reverse i.e used n/2 times then code can be O(n/2)
