@@ -1,3 +1,5 @@
+@if k>n then use module function i.e k=k%n;
+
 #include <bits/stdc++.h> 
 #include <iostream>
 using namespace std;
