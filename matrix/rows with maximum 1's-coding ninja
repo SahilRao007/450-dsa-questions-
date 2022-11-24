@@ -1,0 +1,28 @@
+#include <bits/stdc++.h> 
+int rowMaxOnes(vector<vector<int>>& mat, int n, int m) {
+   map<int,int>mpp;// row , no of 1
+    int maxrow=0;
+    for(int i=0;i<n;i++)
+    {
+        int no=0;
+        for(int j=0;j<m;j++)
+        {
+            if(mat[i][j]==1)
+                no++;
+           
+        }
+        mpp[i]=no;
+    }
+    int val=INT_MIN;
+    for(auto it: mpp)
+    {
+        if(it.second>val)
+        {
+            maxrow=it.first;
+            val=it.second;
+        }
+    }
+    return maxrow;
+    
+}
+
