@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+
+using namespace std;
+
+    int counting(int n)
+    {
+        int ans=0;
+        while(n>0)
+        {
+            if( n & 1 !=0)
+                ans++;
+            n=n>>1;
+        }
+        return ans;
+    }
+
+int main() {
+    int n;
+    cin>>n;
+    int ans=counting(n);
+    cout<<ans;
+}
