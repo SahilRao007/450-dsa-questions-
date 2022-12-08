@@ -45,3 +45,7 @@ class Solution{
             }
         } 
 };
+
+@there is another method to solve it in max(nlogn,mlogm);
+in gfg article 
+
