@@ -1,0 +1,49 @@
+class Solution
+{
+    public:
+    void merge(int arr[], int l, int m, int r)
+    {
+        int n1=m-l+ 1;
+        int n2=r-m;
+        int* arr1=new int[n1];
+        int* arr2=new int[n2];
+        int idx=l;
+        for(int i=0;i<n1;i++)
+        {
+            arr1[i]=arr[idx++];
+        }
+        idx=m+ 1;
+        for(int i=0;i<n2;i++)
+        {
+            arr2[i]=arr[idx++];
+        }
+        idx=l;
+        int i,j;
+        i=j=0;
+        while(i<n1 and j<n2)
+        {
+            if(arr1[i]<arr2[j])
+            arr[idx++]=arr1[i++];
+            else
+            arr[idx++]=arr2[j++];
+        }
+        while(i<n1)
+        {
+            arr[idx++]=arr1[i++];
+        }
+        while(j<n2)
+        {
+            arr[idx++]=arr2[j++];
+        }
+    }
+    public:
+    void mergeSort(int arr[], int l, int r)
+    {
+       if(l>=r)
+       return;
+       int mid=(l+r)/2;
+       mergeSort(arr,l,mid);
+       mergeSort(arr,mid+ 1,r);
+       merge(arr,l,mid,r);
+    }
+};
