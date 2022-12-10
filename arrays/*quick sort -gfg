@@ -1,0 +1,81 @@
+@ apna college method and 2nd method is love babbar method 
+class Solution
+{
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+       if(low >high )
+       return ;
+       int pi=partition(arr,low,high);
+       quickSort(arr,low,pi- 1);
+       quickSort(arr,pi+ 1,high);
+    }
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       int pi=arr[high];
+       int i=low-1;
+       int j=low;
+       while(j<high)
+       {
+           if(arr[j]<pi)
+           {
+               i++;
+               swap(arr[j],arr[i]);
+           }
+           j++;
+       }
+       swap(arr[i+1],arr[high]);
+       return i+1;
+       
+    }
+};
+
+@2nd method 
+
+class Solution
+{
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+        if(low>=high)
+        return ;
+        int pi= partition(arr,low,high);
+        quickSort(arr,low,pi- 1);
+        quickSort(arr,pi+ 1,high);
+    }
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       int cnt=0;
+       int pi=arr[low];
+       for(int i=low+ 1;i<=high;i++)
+       {
+           if(arr[i]<=pi)
+           cnt++;
+       }
+       int idx=low+cnt;
+       swap(arr[low],arr[idx]);
+       int i=low,j=high;
+       while(i<idx and j>idx)
+       {
+           while(arr[i]<pi)
+           {
+               i++;
+           }
+           while(arr[j]>pi)
+           {
+               j--;
+           }
+           if(i<idx and j> idx)
+           {
+               swap(arr[i++],arr[j--]);
+           }
+       }
+       return idx;
+    }
+};
