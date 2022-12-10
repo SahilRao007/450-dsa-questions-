@@ -1,0 +1,24 @@
+#include <bits/stdc++.h> 
+void solve(vector<string>& ans,string temp,int k,int n,string s)
+{
+    if(k>=n)
+    {
+        ans.push_back(temp);
+        return;
+    }
+    for(int i=k;i<n;i++)
+    {
+        
+        swap(temp[i],temp[k]);
+        solve(ans,temp,k+1,n,s);
+        swap(temp[i],temp[k]);
+    }
+}
+vector<string> findPermutations(string &s) {
+    vector<string> ans;
+    string temp=s;
+    int i=0;
+    int n=s.size();
+    solve(ans,temp,i,n,s);
+    return ans;
+}
