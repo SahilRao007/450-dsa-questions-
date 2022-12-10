@@ -1,3 +1,5 @@
+return  n && (!(n & (n - 1))); // 1st and 2nd :=> if even 2nd part give true(first false then true ) ,then and with true is true ;
+OR
 class Solution{
     public:
     // Function to check if given number n is a power of two.
