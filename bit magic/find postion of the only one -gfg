@@ -1,0 +1,45 @@
+time complexity -> logn
+class Solution {
+    bool ispow2(int n)
+    {
+       return n && (!(n & (n - 1)));
+    }
+  public:
+    int findPosition(int N) {
+       if(!ispow2(N))
+       return -1;
+       int pos=0;
+       while(! (N & 1<<pos) and pos<=32)
+       {
+           pos++;
+       }
+       return pos+ 1;
+    }
+};
+
+2nd solution 
+same logn 
+class Solution {
+  public:
+    int findPosition(int N) {
+        int pos=-1;
+        int i=1;
+        int n=N;
+        bool flag=false;
+        while(n>0)
+        {
+            
+            
+            if(n & 1 !=0)
+            {
+                if(flag!=true)
+                {flag=true;pos=i;}
+                else
+                return -1;
+            }
+            i++;
+            n>>=1;
+        }
+        return pos;
+    }
+};
