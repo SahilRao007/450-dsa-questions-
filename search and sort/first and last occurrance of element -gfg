@@ -1,0 +1,38 @@
+vector<int> find(int arr[], int n , int x )
+{
+    int f=0,l=0;
+    int left=0;
+    int right=n-1;
+    bool flag=false;
+    while(left<=right)
+    {
+        int mid=(left+right)/2;
+        if(arr[mid]==x)
+        {   flag=true;
+           int p=mid;
+           while(arr[p+ 1]==x)
+           p++;
+           
+           l=p;
+           p=mid;
+           while(arr[p - 1]==x)
+           p--;
+           f=p;
+           break;
+           
+        }
+        else if(arr[mid]>x)
+        {
+            right=mid-1;
+        }
+        else
+        left=mid+1;
+    }
+    if(!flag)
+    f=l=- 1;
+    vector<int>ans;
+    ans.push_back(f);
+    ans.push_back(l);
+    return ans;
+    
+}
