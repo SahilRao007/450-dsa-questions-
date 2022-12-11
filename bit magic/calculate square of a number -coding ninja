@@ -1,0 +1,39 @@
+O(logn)
+
+#include <bits/stdc++.h> 
+int calculateSquare(int n)
+{
+      if (n == 0)
+        return 0;
+ 
+    // Handle negative number
+    if (n < 0)
+        n = -n;
+ 
+    // Get floor(n/2) using right shift
+    int x = n >> 1;
+ 
+    // If n is odd
+    if (n & 1)
+        return ((calculateSquare(x) << 2) + (x << 2) + 1);
+    else // If n is even
+        return (calculateSquare(x) << 2);
+       
+}
+@2nd method
+O(n)
+
+#include <bits/stdc++.h> 
+int calculateSquare(int num)
+{
+    if(num==0)
+        return 0;
+    if(num<0)
+        num=-num;
+    int res=num;
+    for(int i=1;i<num;i++)
+    {
+        res+=num;
+    }
+    return res;
+}
