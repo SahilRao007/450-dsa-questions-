@@ -1,0 +1,35 @@
+@ time complexity O(n)
+  space o(n)
+
+bool isValidParenthesis(string expression)
+{
+    stack<char>s;
+    for(auto i:expression)
+    {
+        if( (i=='[') or (i=='{') or (i=='(') )
+        {
+            s.push(i);
+            continue;
+        }
+        if(s.empty())
+            return false;
+        
+           char ch=s.top();
+            if( (ch=='{' and i=='}') or 
+                (ch=='(' and i==')') or
+                (ch=='[' and i==']') )
+            {
+               s.pop();
+             }
+        else{
+            return false;
+        }
+           
+      
+    }
+    if(s.empty())
+        return true;
+    else
+        return false;
+    
+}
