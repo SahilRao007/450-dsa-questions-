@@ -1,0 +1,29 @@
+same as merge 2 sorted array without space (here it can be used with the space )
+
+#include <bits/stdc++.h> 
+vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
+	 vector<int>ans;
+    int k=m-1;
+    int i=0,j=0;
+    while(i<=k and j<n)
+    {
+        if(arr1[i]<arr2[j])
+            i++;
+        else
+            swap(arr1[k--],arr2[j++]);
+    }
+    sort(arr1.begin(),arr1.end());
+    sort(arr2.begin(),arr2.end());
+    for(auto i:arr1)
+    {    if(i==0)
+        continue;
+     else
+        ans.push_back(i);
+    }
+    for(auto i:arr2)
+    {    
+        ans.push_back(i);
+    }
+    
+    return ans;
+}
