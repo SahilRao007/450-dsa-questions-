@@ -1,0 +1,46 @@
+@this can be improved more if we use map instead of vector
+  o(n)
+#include <bits/stdc++.h> 
+string convertSentence(string s, int n){
+	string ans="";
+    vector<string>numpad={
+        "2","22","222","3","33","333","4","44","444",
+        "5","55","555","6","66","666","7","77","777",
+        "7777","8","88","888","9","99","999","9999"
+    };
+    for(int i=0;i<n;i++)
+    {
+        int ch=s[i];
+        ans+=numpad[ch-'a'];
+    }
+    return ans;
+}
+
+@my method o(n3)
+
+string ans="";
+    vector<string>numpad={
+        {""},{"_,@"},{"abc"},{"def"},{"ghi"},{"jkl"},{"mno"},{"pqrs"},{"tuv"},{"wxyz"}
+    };
+    for(int i=0;i<s.size();i++)
+    {
+        char ch=s[i];
+        int key;
+        int times;
+        //finding the char
+        for(int j=0;j<numpad.size();j++)
+        {    key=j;
+            for(int k=0;k<numpad[j];k++)
+            {
+                if(numpad[j][k]==ch)
+                {times=k+1;break;}  
+            }
+        }
+        
+        for(int k=0;k<times;k++)
+        {
+            char val=key+'0';
+            ans.push_back(val);
+        }
+    }
+    return ans;
