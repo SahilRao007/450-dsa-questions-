@@ -1,0 +1,11 @@
+#include <bits/stdc++.h> 
+int middleOfThree(int x, int y, int z)
+{
+   if(x>=y and x<=z or x>=z and x<=y)
+       return x;
+   if(y>=z and y<=x or y>=x and y<=z)
+       return y;
+    if(z>=x and z<=y or z>=y or z<=x)
+        return z;
+    
+}
