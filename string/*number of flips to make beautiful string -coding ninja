@@ -1,3 +1,6 @@
+@watch this video to understand https://www.youtube.com/watch?v=F0E7k6X_kt8&ab_channel=Yogesh%26Shailesh%28CodeLibrary%29
+tc->o(n) || o(1)
+
 int makeBeautiful(string s) {
 	int c1=0;//case where even 1 and odd 0
     int c2=0;//case where even 0 and odd 1
