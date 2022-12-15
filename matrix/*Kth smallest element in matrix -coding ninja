@@ -1,0 +1,31 @@
+@binary search method ->tc o(nlogn) || o(1)
+
+#include <bits/stdc++.h> 
+int kMinFloor(vector<vector<int>> &mat, int n, int k) {
+	int l=mat[0][0];
+    int h=mat[n-1][n-1];
+    while(l<h)
+    {
+        int ct=0;
+        int mid=l+(h-l)/2;
+        for(int i=0;i<n;i++)        {ct+=upper_bound(mat[i].begin(),mat[i].end(),mid)-mat[i].begin();}
+        if(ct<k)
+            l=mid+1;
+        else
+            h=mid;
+    }
+    return l;
+}
+
+@2nd method using sort or we can use max heap and pop if heap size is > k 
+#include <bits/stdc++.h> 
+int kMinFloor(vector<vector<int>> &squareCity, int n, int k) {
+	vector<int>val;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+            val.push_back(squareCity[i][j]);
+    }
+    sort(val.begin(),val.end());
+    return val[k-1];
+}
