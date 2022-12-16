@@ -1,0 +1,88 @@
+@to learn the approach watch this video https://www.youtube.com/watch?v=VEuPGTIqXeQ&ab_channel=AyushiSharma
+
+@1st method (fastest)
+
+#include <bits/stdc++.h> 
+bool areIsomorphic(string &str1, string &str2)
+{
+   int n=str1.size();
+    int m=str2.size();
+    if(n!=m)return false;
+    int arr1[128]={0};
+    int arr2[128]={0};
+    for(int i=0;i<n;i++)
+    {
+        if(arr1[str1[i]]!=arr2[str2[i]])
+            return false;
+        arr1[str1[i]]=i+1;
+        arr2[str2[i]]=i+1;
+    }
+    return true;
+}
+
+@2nd method is also good 
+
+#include <bits/stdc++.h> 
+bool areIsomorphic(string &str1, string &str2)
+{
+   int n=str1.size();
+    int m=str2.size();
+    if(n!=m)return false;
+    int arr[128]={};
+    for(int i=0;i<n;i++)
+    {
+        char val=str1[i];
+        char val2=str2[i];
+        if(arr[val])
+        {if(arr[val]!=val2)return false;
+         }
+        else
+        {
+            for(auto i:arr)
+            {if(i==val2)return false;}
+            arr[val]=val2;
+        }
+    }
+    return true;
+}
+@3rd method is my method which is not bad other than using 3 map 
+
+#include<bits/stdc++.h>
+bool areIsomorphic(string &str1, string &str2)
+{
+    int n=str1.size();
+    int m=str2.size();
+    if(n!=m)
+        return false;
+    unordered_map<char,bool>chk;
+    for(auto i:str2)
+        chk[i]=false;
+    //main 
+    unordered_map<char,char>mpp;
+    unordered_map<char,char>rev;
+    for(int i=0;i<n;i++)
+    {
+        int y=str2[i];
+        if(mpp.find(str1[i])==mpp.end())
+        {
+            if(chk[y])
+            { char temp=rev[y];
+             if(temp!=str1[i])
+                 return false;
+            }
+            else{
+                chk[y]=true;
+            }
+            mpp[str1[i]]=y;
+        }
+        else
+        {
+            char temp=mpp[str1[i]];
+            if(temp!=y)
+                return false;
+        }
+    }
+            
+     return true;           
+           
+}
