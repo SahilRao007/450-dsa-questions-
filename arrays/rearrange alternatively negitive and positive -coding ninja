@@ -1,0 +1,93 @@
+@1st method 1 sort the negitive and postive and then fill the alternative space
+o(n)
+
+#include <bits/stdc++.h> 
+
+void rearrange(vector<int> &arr)
+{
+	int n=arr.size();
+    int i=-1;
+    for(int j=0;j<n;j++)
+    {
+        if(arr[j]<0)
+        {
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    int pos=i+1;//pos of first non negitive no
+    int neg=1;
+    int k=0;
+    while(pos<n and neg<n and arr[neg]<0)
+    {
+        swap(arr[neg],arr[pos]);
+        pos++;
+        neg+=2;
+        
+    }
+}
+
+@2nd method is to make the array of neg and pos and then fill the alternative posn 
+o(n) || o(n)
+void rearrange(vector<int> &arr)
+{
+     vector<int>pos;
+    vector<int>neg;
+    int n=arr.size();
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]<0)
+        neg.push_back(arr[i]);
+        else
+        pos.push_back(arr[i]);
+    }
+    int i=0,j=0;
+    int k=0;
+    while(i<neg.size() and j<pos.size())
+    {
+        if(k%2==0)
+        arr[k++]=neg[i++];
+        else
+        arr[k++]=pos[j++];
+    }
+    while (i<neg.size())
+    {
+        arr[k++]=neg[i++];
+    }
+    while (j<pos.size())
+    {
+        arr[k++]=pos[j++];
+    }
+    
+}
+
+@3rd method is very effective(sort) if order is required and like the first mehtod split into halves and then fill the alternative postion 
+o(nlogn) || o(1)
+
+#include <bits/stdc++.h> 
+
+void rearrange(vector<int> &arr)
+{
+	sort(arr.begin(),arr.end());
+    int pptr=-1;
+    int n=arr.size();
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]>=0)
+        {pptr=i;break;}
+    }
+    if(pptr==-1)
+        return ;
+    int i=0;
+    while(i<n and pptr<n)
+    {
+        if(i%2!=0)
+        {
+            if(arr[i]<0)
+            {
+                swap(arr[i],arr[pptr++]);
+            }
+        }
+        i++;
+    }
+}
