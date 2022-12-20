@@ -1,0 +1,77 @@
+@fastest method 
+0(n) || 0(1) 
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+{
+    LinkedListNode<int>* prev=NULL;
+    LinkedListNode<int>* temp=head;
+    while(temp!=NULL  )
+    {
+        LinkedListNode<int>* next=temp->next;
+        temp->next=prev;
+        prev=temp;
+        temp=next;
+    }
+    return prev;
+}
+
+@2nd method 
+0(n) || 0(1) 
+void solve(LinkedListNode<int>* &head,LinkedListNode<int>*curr,LinkedListNode<int>* prev)
+{
+    if(curr==NULL)
+    {head=prev;return ;}
+    LinkedListNode<int>* forward=curr->next;
+    solve(head,forward,curr);
+    curr->next=prev;
+}
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+{
+    if(head==NULL or head->next==NULL)
+        return head;
+    LinkedListNode<int>*newhead=reverseLinkedList(head->next);
+    head->next->next=head;
+    head->next=NULL;
+    return newhead;
+}
+
+@3rd method 
+same complexity for all 
+
+void solve(LinkedListNode<int>* &head,LinkedListNode<int>*curr,LinkedListNode<int>* prev)
+{
+    if(curr==NULL)
+    {head=prev;return ;}
+    LinkedListNode<int>* forward=curr->next;
+    solve(head,forward,curr);
+    curr->next=prev;
+}
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+{
+   LinkedListNode<int>* curr=head;
+    LinkedListNode<int>* prev=NULL;
+    solve(head,curr,prev);
+    return head;
+}
+
+@4th my method (same as 3rd )
+void solve(LinkedListNode<int>* head,LinkedListNode<int>* prev,LinkedListNode<int>* &newhead)
+{
+    if(head==NULL or head->next==NULL)
+    {
+        newhead=head;
+        if(head==NULL)return ;
+            head->next=prev;return ;
+    }
+    LinkedListNode<int>* nextt=head->next;  
+    head->next=prev;
+    prev=head;
+    solve(nextt,prev,newhead);
+    
+}
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+{
+    LinkedListNode<int>* prev=NULL;
+    LinkedListNode<int>* newhead=head;
+    solve(head,prev,newhead);
+    return newhead;
+}
