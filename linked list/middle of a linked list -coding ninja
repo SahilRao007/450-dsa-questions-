@@ -1,0 +1,44 @@
+@best method 0(n/2) || 0(1)
+
+#include <bits/stdc++.h> 
+
+Node *findMiddle(Node *head) {
+    Node* slow=head;
+    Node* fast =head;
+    while(fast!=NULL and fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next;
+        if(fast!=NULL)fast=fast->next;
+    }
+    return slow;
+} 
+
+@it can also be 
+
+Node* slow=head;
+    Node* fast =head;
+    while(fast!=NULL and fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next;
+        if(fast!=NULL)fast=fast->next;
+    }
+    return slow;
+    
+@with full iterative method 
+
+Node *findMiddle(Node *head) {
+    int n=0;
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        n++;temp=temp->next;
+    }
+    n=n/2;
+    while(n>0)
+    {
+        head=head->next;n--;
+    }
+    return head;
+}
