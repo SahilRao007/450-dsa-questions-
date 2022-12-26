@@ -1,0 +1,12 @@
+0(n) || 0(1) 
+bool detectCycle(Node *head){
+	Node* slow=head;
+    Node* fast=head->next;
+    while(fast!=NULL and fast->next!=NULL and fast!=slow)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    if(fast==slow)return true;
+       return false;
+}
