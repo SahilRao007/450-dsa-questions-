@@ -16,15 +16,17 @@ Node *findMiddle(Node *head) {
 
 @it can also be 
 
-Node* slow=head;
-    Node* fast =head;
-    while(fast!=NULL and fast->next!=NULL)
+Node *findMiddle(Node *head) {
+    Node* slow=head;
+    Node* fast =head->next;
+    while(fast!=NULL)
     {
         slow=slow->next;
         fast=fast->next;
         if(fast!=NULL)fast=fast->next;
     }
     return slow;
+}
     
 @with full iterative method 
 
