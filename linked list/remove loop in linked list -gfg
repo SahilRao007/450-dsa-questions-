@@ -1,0 +1,36 @@
+
+class Solution
+{   bool detectCycle(Node *head)
+    {
+	    Node* slow=head;
+        Node* fast=head->next;
+        while(fast!=NULL and fast->next!=NULL and fast!=slow)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        if(fast==slow)return true;
+           return false;
+    }   
+    public:
+    //Function to remove a loop in the linked list.
+    void removeLoop(Node* head)
+    {
+        bool cycle=detectCycle(head);
+        if(!cycle)return;
+        Node* slow=head;
+        Node* fast=head->next;
+        while(fast!=NULL and fast->next!=NULL and fast!=slow)
+        {
+            slow=slow->next;fast=fast->next->next;
+        }
+        //finding the point of intersection 
+        slow=head;
+        while(fast->next!=slow)
+        {
+            slow=slow->next;fast=fast->next;
+        }
+        fast->next=NULL;
+        
+    }
+};
