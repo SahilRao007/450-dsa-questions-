@@ -1,4 +1,5 @@
-@best method 0(n/2) || 0(1)
+@best method 0(n/2) || 0(1) 
+//floyd cycle algo 
 
 #include <bits/stdc++.h> 
 
